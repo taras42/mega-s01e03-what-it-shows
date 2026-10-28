@@ -1,0 +1,100 @@
+---
+layout: runbook
+title: '#4471 review · separate causes before merging'
+owner: taras42
+status: review
+reviewed: 2026-10-28
+signature: taras42
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Finding
+
+The [original incident page](/kb/incidents/4471) calls this one known
+parser issue. The exported classification logic distinguishes a shared
+parser problem from a booking-form hint problem. One queued parser fix
+does not establish that the hint problem will be fixed.
+
+This review uses the KB export dated 2026-10-04. It does not establish
+the current production state.
+
+## Original merged snapshot
+
+<CauseTable ticket={4471} />
+
+The table is computed from unique report IDs merged into #4471.
+It uses tenant locale, booking-form version, and channel through
+`causes.ts` and `locales.ts`.
+
+Browser locale and intake tags are intake guesses, not the grouping
+rule. The table's ticket-ownership labels describe the original export,
+not the new GitHub issues.
+
+## Separate tickets
+
+- [Shared parser: month-first reading for day-first tenants](https://github.com/taras42/mega-s01e03-what-it-shows/issues/1).
+  For example, R-41200 reports 7 April becoming 4 July.
+- [booking-v3: displayed date hint conflicts with tenant interpretation](https://github.com/taras42/mega-s01e03-what-it-shows/issues/2).
+  For example, R-41241 reports a booking for 6 August appearing on 8 June.
+
+The counts shown above describe the KB classifier's assignments.
+They are not proof that every assigned report has the same root cause.
+
+## Reports that need individual investigation
+
+`desk-notes.json` flags R-41202, R-41209, R-41236, R-41344, and R-41620.
+The classifier includes them in the parser group.
+
+Their bodies describe one-day differences, an invite arriving before
+booking, or different days for people in different locations. These
+are not clear month/day swaps.
+
+<Callout kind="warn">
+  Keep these reports visible in the parser ticket and investigate them
+  individually. Do not count them again as another confirmed cause.
+  The export does not establish a timezone bug or another shared cause.
+</Callout>
+
+## The desk kept receiving and merging reports
+
+<QueueTimeline ticket={4471} />
+
+The original incident was reviewed on 2026-09-30. R-41620 was received
+on 2026-10-04 and merged that evening. Marking the incident known did
+not stop incoming reports or establish that they were resolved.
+
+The timeline distinguishes when reports arrived from when they were
+merged. A merge-date spike is not necessarily an arrival-date spike.
+
+## Proposed triage correction
+
+The [written triage rule](/kb/triage/dedupe) and
+[accepted decision 0001](/kb/decisions/0001-dedupe-by-subject)
+merge by matching subject lines. The executable explorer instead
+compares classified causes. These are different rules.
+
+Use subject matches to find candidates, not to prove duplication:
+
+1. Read the body and check tenant, locale, form version, and channel.
+2. Merge only when the evidence supports the same failure mechanism.
+3. Keep different causes separate even when their subjects match.
+4. Investigate unknown or contradictory cases rather than merging by default.
+5. Recompute report counts and review new arrivals before claiming resolution.
+
+This is a proposed replacement policy, not an accepted decision.
+Leave decision 0001 unchanged; record an accepted replacement in a
+new numbered decision if the desk adopts this policy.
+
+## Verification before closure
+
+Test the parser and hint fixes separately. Review the unusual reports
+individually. Neither a classifier assignment nor a queued fix proves
+that a customer's problem is resolved.
+
+<RenderStamp {signature} />
