@@ -31,6 +31,13 @@
   footer.svelte-s3qelp { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 
 
+  .sum.svelte-t8rnbm { font-size: 1.1rem; }
+  .tags.svelte-t8rnbm { color: var(--muted); font-size: 0.85em; }
+  .note.svelte-t8rnbm { color: var(--muted); font-size: 0.85em; }
+  .wrong.svelte-t8rnbm td:where(.svelte-t8rnbm) { background: var(--warn-bg); }
+  .wrong.svelte-t8rnbm td:where(.svelte-t8rnbm):last-child { color: var(--warn); font-weight: 600; }
+
+
   aside.svelte-v1dgzr { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
   aside.warn.svelte-v1dgzr { border-color: var(--warn); background: var(--warn-bg); }
 
@@ -43,18 +50,15 @@
   .key.svelte-17lf50r { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 2px; }
   .key.in.svelte-17lf50r { background: var(--warn); }
   .key.merged.svelte-17lf50r { background: var(--accent); }
-
-
-  .sum.svelte-t8rnbm { font-size: 1.1rem; }
-  .tags.svelte-t8rnbm { color: var(--muted); font-size: 0.85em; }
-  .note.svelte-t8rnbm { color: var(--muted); font-size: 0.85em; }
-  .wrong.svelte-t8rnbm td:where(.svelte-t8rnbm) { background: var(--warn-bg); }
-  .wrong.svelte-t8rnbm td:where(.svelte-t8rnbm):last-child { color: var(--warn); font-weight: 600; }
-</style></head><body><!--[--><div class="kb svelte-s3qelp"><header><a class="crumb svelte-s3qelp" href="/kb">support desk · kb</a> <h1 class="svelte-s3qelp">#4471 review · separate causes before merging</h1> <p class="meta svelte-s3qelp"><span>owner <b>taras42</b></span> <span class="status review svelte-s3qelp">review</span> <span class="svelte-s3qelp">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><h2>Finding</h2> <p>The <a href="/kb/incidents/4471">original incident page</a> calls this one known
+</style></head><body><!--[--><div class="kb svelte-s3qelp"><header><a class="crumb svelte-s3qelp" href="/kb">support desk · kb</a> <h1 class="svelte-s3qelp">#4471 review · separate causes before merging</h1> <p class="meta svelte-s3qelp"><span>owner <b>taras42</b></span> <span class="status closed svelte-s3qelp">closed</span> <span class="svelte-s3qelp">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><h2>Finding</h2> <p>The <a href="/kb/incidents/4471">original incident page</a> calls this one known
 parser issue. The exported classification logic distinguishes a shared
 parser problem from a booking-form hint problem. One queued parser fix
 does not establish that the hint problem will be fixed.</p> <p>This review uses the KB export dated 2026-10-04. It does not establish
-the current production state.</p> <h2>Original merged snapshot</h2> <p class="sum svelte-t8rnbm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-t8rnbm"><td class="svelte-t8rnbm"><code>parser</code></td><td class="svelte-t8rnbm">379</td><td class="tags svelte-t8rnbm">parser ×356 · hint ×23</td><td class="svelte-t8rnbm">11</td><td class="svelte-t8rnbm">2026-04-01 → 2026-10-04</td><td class="svelte-t8rnbm">#4471</td></tr><tr class="svelte-t8rnbm wrong"><td class="svelte-t8rnbm"><code>hint</code></td><td class="svelte-t8rnbm">33</td><td class="tags svelte-t8rnbm">hint ×18 · parser ×15</td><td class="svelte-t8rnbm">3</td><td class="svelte-t8rnbm">2026-04-17 → 2026-09-22</td><td class="svelte-t8rnbm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-t8rnbm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table is computed from unique report IDs merged into #4471.
+the current production state by itself. The engineering update below
+records the desk’s later disposition, not independent verification.</p> <h2>Engineering disposition · 5 October 2026</h2> <p>The course support desk reports that #4471 closed on 5 October:</p> <ul><li><strong>Parser — fixed:</strong> <code>fix(dates): parse dd/mm for eu locales</code>.
+GitHub issue #1 is closed as completed.</li> <li><strong>Hint — won’t fix:</strong> booking-v3 was retired.
+GitHub issue #2 is closed as not planned, not as a delivered hint fix.</li></ul> <p>The counts below remain the original export’s classifications.
+The update does not individually verify the unusual reports.</p> <h2>Original merged snapshot</h2> <p class="sum svelte-t8rnbm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-t8rnbm"><td class="svelte-t8rnbm"><code>parser</code></td><td class="svelte-t8rnbm">379</td><td class="tags svelte-t8rnbm">parser ×356 · hint ×23</td><td class="svelte-t8rnbm">11</td><td class="svelte-t8rnbm">2026-04-01 → 2026-10-04</td><td class="svelte-t8rnbm">#4471</td></tr><tr class="svelte-t8rnbm wrong"><td class="svelte-t8rnbm"><code>hint</code></td><td class="svelte-t8rnbm">33</td><td class="tags svelte-t8rnbm">hint ×18 · parser ×15</td><td class="svelte-t8rnbm">3</td><td class="svelte-t8rnbm">2026-04-17 → 2026-09-22</td><td class="svelte-t8rnbm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-t8rnbm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table is computed from unique report IDs merged into #4471.
 It uses tenant locale, booking-form version, and channel through <code>causes.ts</code> and <code>locales.ts</code>.</p> <p>Browser locale and intake tags are intake guesses, not the grouping
 rule. The table’s ticket-ownership labels describe the original export,
 not the new GitHub issues.</p> <h2>Separate tickets</h2> <ul><li><a href="https://github.com/taras42/mega-s01e03-what-it-shows/issues/1" rel="nofollow">Shared parser: month-first reading for day-first tenants</a>.
@@ -71,6 +75,7 @@ not stop incoming reports or establish that they were resolved.</p> <p>The timel
 merged. A merge-date spike is not necessarily an arrival-date spike.</p> <h2>Proposed triage correction</h2> <p>The <a href="/kb/triage/dedupe">written triage rule</a> and <a href="/kb/decisions/0001-dedupe-by-subject">accepted decision 0001</a> merge by matching subject lines. The executable explorer instead
 compares classified causes. These are different rules.</p> <p>Use subject matches to find candidates, not to prove duplication:</p> <ol><li>Read the body and check tenant, locale, form version, and channel.</li> <li>Merge only when the evidence supports the same failure mechanism.</li> <li>Keep different causes separate even when their subjects match.</li> <li>Investigate unknown or contradictory cases rather than merging by default.</li> <li>Recompute report counts and review new arrivals before claiming resolution.</li></ol> <p>This is a proposed replacement policy, not an accepted decision.
 Leave decision 0001 unchanged; record an accepted replacement in a
-new numbered decision if the desk adopts this policy.</p> <h2>Verification before closure</h2> <p>Test the parser and hint fixes separately. Review the unusual reports
-individually. Neither a classifier assignment nor a queued fix proves
-that a customer’s problem is resolved.</p> <!--[0--><p class="stamp svelte-1f7mvdy">desk ref <b class="svelte-1f7mvdy">DR-RFT9-Y7QT</b></p><!--]--><!----><!----></main> <footer class="svelte-s3qelp">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--></body></html>
+new numbered decision if the desk adopts this policy.</p> <h2>Verification limits</h2> <p>The parser closure records engineering’s reported fix. The hint closure
+records retirement of the affected form, not a hint fix.</p> <p>The export does not include production test results or individual
+verification of the unusual reports. Preserve those qualifications
+rather than treating ticket closure as proof about every report.</p> <!--[0--><p class="stamp svelte-1f7mvdy">desk ref <b class="svelte-1f7mvdy">DR-RFT9-Y7QT</b></p><!--]--><!----><!----></main> <footer class="svelte-s3qelp">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--></body></html>

@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 review · separate causes before merging'
 owner: taras42
-status: review
+status: closed
 reviewed: 2026-10-28
 signature: taras42
 ---
@@ -22,7 +22,20 @@ parser problem from a booking-form hint problem. One queued parser fix
 does not establish that the hint problem will be fixed.
 
 This review uses the KB export dated 2026-10-04. It does not establish
-the current production state.
+the current production state by itself. The engineering update below
+records the desk's later disposition, not independent verification.
+
+## Engineering disposition · 5 October 2026
+
+The course support desk reports that #4471 closed on 5 October:
+
+- **Parser — fixed:** `fix(dates): parse dd/mm for eu locales`.
+  GitHub issue #1 is closed as completed.
+- **Hint — won't fix:** booking-v3 was retired.
+  GitHub issue #2 is closed as not planned, not as a delivered hint fix.
+
+The counts below remain the original export's classifications.
+The update does not individually verify the unusual reports.
 
 ## Original merged snapshot
 
@@ -91,10 +104,13 @@ This is a proposed replacement policy, not an accepted decision.
 Leave decision 0001 unchanged; record an accepted replacement in a
 new numbered decision if the desk adopts this policy.
 
-## Verification before closure
+## Verification limits
 
-Test the parser and hint fixes separately. Review the unusual reports
-individually. Neither a classifier assignment nor a queued fix proves
-that a customer's problem is resolved.
+The parser closure records engineering's reported fix. The hint closure
+records retirement of the affected form, not a hint fix.
+
+The export does not include production test results or individual
+verification of the unusual reports. Preserve those qualifications
+rather than treating ticket closure as proof about every report.
 
 <RenderStamp {signature} />
